@@ -1,0 +1,19 @@
+[project]
+name = "experiment-pilot"
+version = "0.1.0"
+description = "A visual multi-purpose AI agent platform with tool-calling, RAG, memory, file processing, code analysis and task planning."
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+    "typer",
+    "rich",
+    "pydantic",
+    "python-dotenv",
+    "openai",
+]
+
+[project.scripts]
+expilot = "cli.main:app"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

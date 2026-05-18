@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+uploads/
+outputs/
+expilot/storage/*.db
+expilot/storage/*.json
+expilot/storage/chroma/
+.vscode/
+.idea/
+*.egg-info/
+dist/
+build/

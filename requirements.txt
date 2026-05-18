@@ -1,0 +1,13 @@
+openai
+python-dotenv
+streamlit
+typer
+rich
+pydantic
+chromadb
+pypdf
+python-docx
+pandas
+openpyxl
+tiktoken
+numpy

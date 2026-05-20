@@ -1,21 +1,47 @@
-# ExperimentPilot Studio
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" alt="Streamlit">
+  <img src="https://img.shields.io/badge/ChromaDB-FF6B6B?style=flat-square&logo=chromadb&logoColor=white" alt="ChromaDB">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+</p>
 
-​                             一个可视化的多用途 AI Agent 平台，支持工具调用、RAG、记忆、文件处理、代码分析和任务规划。
+<h1 align="center">🚀 ExperimentPilot Studio</h1>
 
-## 功能特性
+<p align="center">
+  <strong>一个可视化的多用途 AI Agent 平台</strong><br>
+  支持工具调用、RAG、记忆、文件处理、代码分析和任务规划
+</p>
 
-- **可视化聊天界面** — 基于 Streamlit 的多页面 UI，实时展示思考过程
-- **工具调用 Agent 循环** — LLM 自主选择并执行工具，逐步追踪执行过程
-- **18 个内置工具** — 文件读写、Shell 命令、代码扫描、CSV/Excel 分析、ML 实验报告、网页搜索、报告生成
-- **多 Agent 模式** — 通用、文件、代码、数据、ML 实验、研究助手
-- **本地 RAG 知识库** — 文档解析、分块、向量检索 (ChromaDB) 和上下文问答
-- **记忆系统** — 跨会话持久化用户偏好和近期任务
-- **工具追踪查看器** — 实时可视化每个工具调用的输入/输出
-- **CLI + Web** — 交互式终端模式 (Typer + Rich) 和 Streamlit Web 界面
-- **人机协作安全** — 工作区沙箱、危险命令拦截、路径遍历保护
-- **国际化支持** — 中英文界面切换
+<p align="center">
+  <a href="#-功能特性">功能特性</a> •
+  <a href="#-快速开始">快速开始</a> •
+  <a href="#-项目结构">项目结构</a> •
+  <a href="#-工具系统">工具系统</a> •
+  <a href="#-使用示例">使用示例</a> •
+  <a href="#-技术栈">技术栈</a> •
+  <a href="#-开发路线">开发路线</a>
+</p>
 
-## 快速开始
+---
+
+## ✨ 功能特性
+
+| 功能 | 描述 |
+|------|------|
+| 💬 **可视化聊天界面** | 基于 Streamlit 的多页面 UI，实时展示思考过程 |
+| 🔄 **工具调用 Agent 循环** | LLM 自主选择并执行工具，逐步追踪执行过程 |
+| 🛠️ **18 个内置工具** | 文件读写、Shell 命令、代码扫描、CSV/Excel 分析、ML 实验报告、网页搜索、报告生成 |
+| 🤖 **多 Agent 模式** | 通用、文件、代码、数据、ML 实验、研究助手 |
+| 📚 **本地 RAG 知识库** | 文档解析、分块、向量检索 (ChromaDB) 和上下文问答 |
+| 🧠 **记忆系统** | 跨会话持久化用户偏好和近期任务 |
+| 🔍 **工具追踪查看器** | 实时可视化每个工具调用的输入/输出 |
+| 💻 **CLI + Web** | 交互式终端模式 (Typer + Rich) 和 Streamlit Web 界面 |
+| 🔒 **人机协作安全** | 工作区沙箱、危险命令拦截、路径遍历保护 |
+| 🌐 **国际化支持** | 中英文界面切换 |
+
+---
+
+## 🚀 快速开始
 
 ### 1. 环境配置
 
@@ -39,7 +65,7 @@ OPENAI_BASE_URL=https://api.openai.com/v1
 MODEL_NAME=gpt-4o-mini
 ```
 
-支持 OpenAI、SiliconFlow 或任何兼容 OpenAI 格式的 API。
+> 💡 支持 OpenAI、SiliconFlow 或任何兼容 OpenAI 格式的 API。
 
 ### 3. 启动 Web 界面
 
@@ -62,7 +88,9 @@ python cli/main.py run "analyze experiments/metrics.json" -m ml
 python cli/main.py tools
 ```
 
-## 项目结构
+---
+
+## 📁 项目结构
 
 ```
 ExperimentPilot/
@@ -97,19 +125,23 @@ ExperimentPilot/
 └── uploads/                   # 用户上传文件
 ```
 
-## 工具系统
+---
+
+## 🛠️ 工具系统
 
 | 类别 | 工具 |
 |------|------|
-| 文件操作 | `list_dir`, `read_file`, `write_file`, `search_files` |
-| Shell | `run_shell` (沙箱化) |
-| 代码分析 | `scan_code_project`, `read_code_file` |
-| 数据分析 | `analyze_csv`, `analyze_excel` |
-| ML 实验 | `summarize_json_metrics`, `compare_experiment_results`, `generate_experiment_report` |
-| 报告生成 | `generate_markdown_report`, `generate_html_report`, `save_text_output` |
-| 网络工具 | `fetch_url`, `search_web`, `download_file` |
+| 📂 文件操作 | `list_dir`, `read_file`, `write_file`, `search_files` |
+| 💻 Shell | `run_shell` (沙箱化) |
+| 🔍 代码分析 | `scan_code_project`, `read_code_file` |
+| 📊 数据分析 | `analyze_csv`, `analyze_excel` |
+| 🧪 ML 实验 | `summarize_json_metrics`, `compare_experiment_results`, `generate_experiment_report` |
+| 📝 报告生成 | `generate_markdown_report`, `generate_html_report`, `save_text_output` |
+| 🌐 网络工具 | `fetch_url`, `search_web`, `download_file` |
 
-## 使用示例
+---
+
+## 💡 使用示例
 
 ### 与 Agent 聊天
 
@@ -129,17 +161,23 @@ Task > 比较 experiments/metrics.json 和 metrics_baseline.json
   Answer: [详细的对比分析报告]
 ```
 
-## 技术栈
+---
 
-- **前端**: Streamlit
-- **后端**: Python 3.11
-- **LLM**: OpenAI 兼容 API (OpenAI / SiliconFlow / 本地模型)
-- **向量数据库**: ChromaDB
-- **CLI**: Typer + Rich
-- **数据处理**: Pandas, pypdf, python-docx
-- **数据校验**: Pydantic
+## 🛠️ 技术栈
 
-## 开发路线
+| 组件 | 技术 |
+|------|------|
+| 🖥️ **前端** | Streamlit |
+| ⚙️ **后端** | Python 3.11 |
+| 🤖 **LLM** | OpenAI 兼容 API (OpenAI / SiliconFlow / 本地模型) |
+| 📚 **向量数据库** | ChromaDB |
+| 💻 **CLI** | Typer + Rich |
+| 📊 **数据处理** | Pandas, pypdf, python-docx |
+| ✅ **数据校验** | Pydantic |
+
+---
+
+## 🗺️ 开发路线
 
 - [ ] WebSocket 流式输出，实现实时 Token 生成
 - [ ] 多 Agent 协作 (规划 → 执行 → 审查)
@@ -148,6 +186,14 @@ Task > 比较 experiments/metrics.json 和 metrics_baseline.json
 - [ ] MCP 工具集成
 - [ ] 权限系统 (只读 / 安全 / 开发者模式)
 
-## 许可证
+---
+
+## 📄 许可证
 
 本项目采用 [MIT 许可证](LICENSE) 开源。
+
+---
+
+<p align="center">
+  如果觉得有用，请给个 ⭐ 支持一下！
+</p>

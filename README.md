@@ -5,6 +5,213 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
 </p>
 
+<p align="center">
+  <a href="#english">English</a> | <a href="#中文">中文</a>
+</p>
+
+---
+
+<div id="english">
+
+<h1 align="center">🚀 ExperimentPilot Studio</h1>
+
+<p align="center">
+  <strong>A Visual Multi-Purpose AI Agent Platform</strong><br>
+  Supports Tool Calling, RAG, Memory, File Processing, Code Analysis and Task Planning
+</p>
+
+<p align="center">
+  <a href="#-features">Features</a> •
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-project-structure">Project Structure</a> •
+  <a href="#-tool-system">Tool System</a> •
+  <a href="#-usage-examples">Examples</a> •
+  <a href="#-tech-stack">Tech Stack</a> •
+  <a href="#-roadmap">Roadmap</a>
+</p>
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 💬 **Visual Chat Interface** | Streamlit-based multi-page UI with real-time thinking process display |
+| 🔄 **Tool-Calling Agent Loop** | LLM autonomously selects and executes tools with step-by-step tracking |
+| 🛠️ **18 Built-in Tools** | File read/write, shell commands, code scanning, CSV/Excel analysis, ML experiment reports, web search, report generation |
+| 🤖 **Multi-Agent Modes** | General, File, Code, Data, ML Experiment, Research assistant |
+| 📚 **Local RAG Knowledge Base** | Document parsing, chunking, vector retrieval (ChromaDB), and context Q&A |
+| 🧠 **Memory System** | Cross-session persistence for user preferences and recent tasks |
+| 🔍 **Tool Trace Viewer** | Real-time visualization of each tool call's input/output |
+| 💻 **CLI + Web** | Interactive terminal mode (Typer + Rich) and Streamlit web interface |
+| 🔒 **Human-in-the-Loop Safety** | Workspace sandbox, dangerous command interception, path traversal protection |
+| 🌐 **Internationalization** | Chinese/English interface switching |
+
+---
+
+## 🚀 Quick Start
+
+### 1. Environment Setup
+
+```bash
+conda create -n experiment-pilot python=3.11
+conda activate experiment-pilot
+pip install -r requirements.txt
+```
+
+### 2. Configure API
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` file with your API configuration:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+OPENAI_BASE_URL=https://api.openai.com/v1
+MODEL_NAME=gpt-4o-mini
+```
+
+> 💡 Supports OpenAI, SiliconFlow, or any OpenAI-compatible API.
+
+### 3. Launch Web Interface
+
+```bash
+streamlit run app.py
+```
+
+Open browser at `http://localhost:8501`
+
+### 4. Use CLI
+
+```bash
+# Interactive chat
+python cli/main.py chat -m general
+
+# Single task execution
+python cli/main.py run "analyze experiments/metrics.json" -m ml
+
+# List all tools
+python cli/main.py tools
+```
+
+---
+
+## 📁 Project Structure
+
+```
+ExperimentPilot/
+├── app.py                     # Streamlit main page
+├── cli/main.py                # CLI entry point (Typer + Rich)
+├── pages/                     # Streamlit multi-page UI
+│   ├── 1_💬_Chat_Agent.py
+│   ├── 2_📁_File_Assistant.py
+│   ├── 3_💻_Code_Assistant.py
+│   ├── 4_📊_Data_Assistant.py
+│   ├── 5_📚_Knowledge_Base.py
+│   ├── 6_🧭_Tool_Trace.py
+│   └── 7_⚙️_Settings.py
+├── expilot/
+│   ├── core/                  # Core modules (shared by CLI & Web)
+│   │   ├── agent.py           # Agent loop (generator pattern)
+│   │   ├── llm.py             # LLM client (with retry)
+│   │   ├── memory.py          # Persistent memory
+│   │   ├── trace.py           # Execution trace logging
+│   │   ├── prompts.py         # Prompt templates
+│   │   └── schema.py          # Data models (Pydantic)
+│   ├── tools/                 # 18 built-in tools
+│   ├── rag/                   # RAG pipeline
+│   │   ├── loader.py          # Document parser (PDF/DOCX/CSV/TXT)
+│   │   ├── splitter.py        # Text chunking
+│   │   ├── vector_store.py    # ChromaDB vector store
+│   │   └── retriever.py       # Context retriever
+│   ├── i18n.py                # Internationalization support
+│   └── storage/               # Persistent data
+├── workspace/                 # Agent sandbox directory
+├── experiments/               # ML experiment data
+└── uploads/                   # User uploaded files
+```
+
+---
+
+## 🛠️ Tool System
+
+| Category | Tools |
+|----------|-------|
+| 📂 File Operations | `list_dir`, `read_file`, `write_file`, `search_files` |
+| 💻 Shell | `run_shell` (sandboxed) |
+| 🔍 Code Analysis | `scan_code_project`, `read_code_file` |
+| 📊 Data Analysis | `analyze_csv`, `analyze_excel` |
+| 🧪 ML Experiments | `summarize_json_metrics`, `compare_experiment_results`, `generate_experiment_report` |
+| 📝 Report Generation | `generate_markdown_report`, `generate_html_report`, `save_text_output` |
+| 🌐 Web Tools | `fetch_url`, `search_web`, `download_file` |
+
+---
+
+## 💡 Usage Examples
+
+### Chat with Agent
+
+```
+Task > Scan workspace directory and summarize project structure
+  Step 1: Using list_dir...
+  Step 2: Using read_file...
+  Answer: [Markdown formatted project structure summary]
+```
+
+### ML Experiment Analysis
+
+```
+Task > Compare experiments/metrics.json and metrics_baseline.json
+  Step 1: Using read_file...
+  Step 2: Using compare_experiment_results...
+  Answer: [Detailed comparison analysis report]
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| 🖥️ **Frontend** | Streamlit |
+| ⚙️ **Backend** | Python 3.11 |
+| 🤖 **LLM** | OpenAI-compatible API (OpenAI / SiliconFlow / Local Models) |
+| 📚 **Vector DB** | ChromaDB |
+| 💻 **CLI** | Typer + Rich |
+| 📊 **Data Processing** | Pandas, pypdf, python-docx |
+| ✅ **Validation** | Pydantic |
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] WebSocket streaming for real-time token generation
+- [ ] Multi-agent collaboration (Planning → Execution → Review)
+- [ ] FastAPI + React production-grade refactoring
+- [ ] Docker containerization
+- [ ] MCP tool integration
+- [ ] Permission system (Read-only / Safe / Developer modes)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  If this helps you, please give a ⭐ to show support!
+</p>
+
+</div>
+
+---
+
+<div id="中文">
+
 <h1 align="center">🚀 ExperimentPilot Studio</h1>
 
 <p align="center">
@@ -197,3 +404,5 @@ Task > 比较 experiments/metrics.json 和 metrics_baseline.json
 <p align="center">
   如果觉得有用，请给个 ⭐ 支持一下！
 </p>
+
+</div>
